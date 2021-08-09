@@ -15,18 +15,13 @@
 {% block navbar %}
     {% include "core/navbar.html" %}
 {% endblock %}
-{% block extrabar %}
+{% block ShowCategory %}
+    <!-- show and sort categories -->
+    {% include "core/show-category.html" %}
+{% endblock %}
+{% block ShowProduct %}
     <!-- product item  show -->
-    {% for product in products %}
-        <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="{{ product.Images.url }}" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">{{ product.Name }}</h5>
-                <p class="card-text">{{ product.description }}</p>
-                <a href="{{ product.get_absolute_url }}" class="btn btn-primary">Go to see</a>
-            </div>
-        </div>
-    {% endfor %}
+    {% include "core/Product_show.html" %}
 {% endblock %}
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

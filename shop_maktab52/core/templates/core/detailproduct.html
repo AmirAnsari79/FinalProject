@@ -11,13 +11,10 @@
 </head>
 <body>
 
-
-
-
-
 <h3>{{ product.Name }}</h3>
-
-
+<p><small>{{ product.created_at }}</small><br><h2>{{ product.Price }} Toman </h2></p>
+<img src="{{ product.Images.url }}" style="width">
+<p>{{ product.description }}</p>
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

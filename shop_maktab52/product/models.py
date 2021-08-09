@@ -33,3 +33,6 @@ class Category(BaseModel):
 
     def __str__(self):
         return self.Name
+
+    def get_absolute_url(self):
+        return reverse('core:categories_sort', args=[self.Slug])
