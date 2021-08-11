@@ -12,10 +12,17 @@
 <body>
 
 <h3>{{ product.Name }}</h3>
-<p><small>{{ product.created_at }}</small><br><h2>{{ product.Price }} Toman </h2></p>
+<p><small>{{ product.created_at }}</small><br>
+<h2>{{ product.Price }} Toman </h2></p>
 <img src="{{ product.Images.url }}" style="width">
 <p>{{ product.description }}</p>
-
+<br>
+<form action="">
+    {{ form }}
+    {% csrf_token %}
+    <input type="submit" value="add">
+</form>
+<br><br><br>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

@@ -5,8 +5,8 @@ from core.models import BaseModel
 
 
 class Product(BaseModel):
-    Category = models.ForeignKey(
-        'Category', on_delete=models.CASCADE, related_name='Product'
+    Category = models.ManyToManyField(
+        'Category', related_name='Product'
     )
     Name = models.CharField(max_length=255)
     Slug = models.SlugField(max_length=100, unique=True)
@@ -25,6 +25,14 @@ class Product(BaseModel):
 class Category(BaseModel):
     Name = models.CharField(max_length=150)
     Slug = models.SlugField(max_length=100, unique=True)
+    sub_category = models.ForeignKey(
+        'self', on_delete=models.CASCADE, related_name="SubCategory", null=True, blank=True
+    )
+    IsSubCategory = models.BooleanField(default=False)
+    """
+    if default=True ==> category is child
+    else default=False ==> category is self (koli)
+    """
 
     class Meta:
         ordering = ('Name',)
