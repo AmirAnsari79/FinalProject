@@ -17,9 +17,9 @@
 <img src="{{ product.Images.url }}" style="width">
 <p>{{ product.description }}</p>
 <br>
-<form action="">
-    {{ form }}
+<form action="{% url 'basket:AddProduct' product.id %}">
     {% csrf_token %}
+    {{ form }}
     <input type="submit" value="add">
 </form>
 <br><br><br>

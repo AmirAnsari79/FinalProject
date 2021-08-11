@@ -1,6 +1,30 @@
-
 {% extends 'core/home.html' %}
+{% block ShowBasket %}
 
+    <table class="table table-hover table-dark">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">نام محصول</th>
+            <th scope="col">تعداد</th>
+            <th scope="col">قیمت</th>
+            <th scope="col">قیمت کل</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in basket %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>PRO</td>
+                <td>{{ item.Number }}</td>
+                <td>{{ item.Price }}</td>
+                <td>{{ item.total_price }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
 
 
 

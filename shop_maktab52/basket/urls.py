@@ -4,6 +4,6 @@ from . import views
 app_name = 'basket'
 urlpatterns = [
 
-    path('det/', views.detail, name='detail'),
-    path('basket/add/<int:ProductId>/', views.AddProduct, name='AddProduct')
+    path('det/', views.detail, name='basket_detail'),
+    path('add/<int:ProductId>/', views.AddProduct, name='AddProduct')
 ]
