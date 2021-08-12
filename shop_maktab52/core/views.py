@@ -13,7 +13,7 @@ def Home_Land(request, slug=None):
         'products': products,
         'categories': categories
     }
-    return render(request, 'core/home.html', content)
+    return render(request, 'base.html', content)
 
 
 def Product_Details(request, slug):

@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,23 +8,25 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.5.3/css/bootstrap.min.css"
           integrity="sha384-JvExCACAZcHNJEc7156QaHXTnQL3hQBixvj5RV5buE7vgnNEzzskDtx9NQ4p6BJe" crossorigin="anonymous">
-    <title>Details</title>
+    <title>Home</title>
 </head>
-<body>
+<body style="background-color: #E5E4E2">
 
-<h3>{{ product.Name }}</h3>
-<p><small>{{ product.created_at }}</small><br>
-<h2>{{ product.Price }} Toman </h2></p>
-<img src="{{ product.Images.url }}" style="width">
-<p>{{ product.description }}</p>
-<br>
-<form action="{% url 'basket:AddProduct' product.id %}" method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="add">
-</form>
-<br><br><br>
+{% block navbar %}
+    {% include "inc/navbar.html" %}
+{% endblock %}
+{% block ShowCategory %}
+    <!-- show and sort categories -->
+    {% include "inc/show-category.html" %}
+{% endblock %}
+{% block ShowProduct %}
+    <!-- product item  show -->
+    {% include "inc/Product_show.html" %}
+{% endblock %}
+{% block ShowBasket %}
 
+
+{% endblock %}
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>

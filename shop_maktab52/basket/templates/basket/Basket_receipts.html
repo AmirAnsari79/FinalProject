@@ -9,6 +9,7 @@
             <th scope="col">تعداد</th>
             <th scope="col">قیمت</th>
             <th scope="col">قیمت کل</th>
+            <th scope="col">حذف</th>
         </tr>
         </thead>
         <tbody>
@@ -19,8 +20,15 @@
                 <td>{{ item.Number }}</td>
                 <td>{{ item.Price }}</td>
                 <td>{{ item.total_price }}</td>
+            <td><a href="{% url 'basket:Basket_remove' item.product.id %}">حذف</a></td>
             </tr>
         {% endfor %}
+<tr>
+
+    <td>قیمت نهایی</td>
+    <td colspan="4"></td>
+    <td>{{ basket.total_price }}</td>
+</tr>
         </tbody>
     </table>
 
