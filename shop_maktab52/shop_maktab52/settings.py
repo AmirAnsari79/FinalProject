@@ -80,9 +80,9 @@ WSGI_APPLICATION = 'shop_maktab52.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'shop_maktab52',
-        'USER': 'shop_maktab52',
-        'PASSWORD': 'shop_maktab52',
+        'NAME': 'maktab52_shop',
+        'USER': 'amirhossein',
+        'PASSWORD': '89467336',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }

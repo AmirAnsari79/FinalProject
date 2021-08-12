@@ -43,3 +43,7 @@ class Basket:
 
     def total_price(self):
         return sum(Decimal(_['price']) * _['Number'] for _ in self.cart.values())
+
+    def clear(self):
+        del self.session[SESSION_ID]
+        self.session_modification()

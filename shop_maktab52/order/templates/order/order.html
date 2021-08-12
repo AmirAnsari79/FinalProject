@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block ShowBasket %}
+
+    <h3>CheckOut</h3>
+    <p>Total:{{ order.get_total_price }}</p>
+    <a href="{% url 'order:payment' order_id %}">pay</a>
+{% endblock %}
