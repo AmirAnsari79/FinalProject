@@ -4,6 +4,7 @@ from product.models import Product
 from .forms import AddForm
 from .sessions import Basket
 from django.views.decorators.http import require_POST
+from user.models import User
 
 
 # Create your views here.
@@ -24,6 +25,7 @@ def AddProduct(request, product_id):
     if form.is_valid():
         cd = form.cleaned_data
         basket.add(product=product, Number=cd['Number'])
+
     return redirect('basket:basket_detail')
 
 

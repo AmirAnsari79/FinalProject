@@ -30,8 +30,8 @@ def UserLogout(request):
 
 
 def UserRegister(request):
-    if request.method == 'POST':
-        form = UserRegister(request.POST)
+    if request.method == "POST":
+        form = UserRegister(request.POST or None)
         if form.is_valid():
             cd = form.cleaned_data
             user = User.objects.create_user(cd['email'], cd['full_name'], cd['password'])
