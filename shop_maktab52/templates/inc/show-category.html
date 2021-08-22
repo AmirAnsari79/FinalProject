@@ -1,7 +1,8 @@
+{% load i18n %}
 <br>
 
 <div class="container" style="width:50%; direction: rtl;">
-<span>دسته بندی: </span>
+<span>{% trans 'دسته بندی:' %} </span>
     {% for category in categories %}
 
         <div class="btn-group">

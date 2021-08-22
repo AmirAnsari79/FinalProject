@@ -1,18 +1,19 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block ShowCategory %}{% endblock %}
 
 {% block ShowBasket %}
-<br>
-<br>
+    <br>
+    <br>
     <table class="table table-hover table-dark">
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">نام محصول</th>
-            <th scope="col">تعداد</th>
-            <th scope="col">قیمت</th>
-            <th scope="col">قیمت کل</th>
-            <th scope="col">حذف</th>
+            <th scope="col">{% trans 'نام محصول' %}</th>
+            <th scope="col">{% trans 'تعداد' %}</th>
+            <th scope="col">{% trans 'قیمت' %}</th>
+            <th scope="col">{% trans 'قیمت کل' %}</th>
+            <th scope="col">{% trans 'حذف' %}</th>
         </tr>
         </thead>
         <tbody>
@@ -23,19 +24,19 @@
                 <td>{{ item.Number }}</td>
                 <td>{{ item.Price }}</td>
                 <td>{{ item.total_price }}</td>
-                <td><a href="{% url 'basket:Basket_remove' item.product.id %}">حذف</a></td>
+                <td><a href="{% url 'basket:Basket_remove' item.product.id %}">{% trans 'حذف' %}</a></td>
             </tr>
         {% endfor %}
         <tr>
 
-            <td>قیمت نهایی</td>
+            <td>{% trans 'قیمت نهایی' %}</td>
             <td colspan="4"></td>
             <td>{{ basket.total_price }}</td>
         </tr>
         </tbody>
     </table>
 
-    <a href="{% url 'order:create' %}" class="btn btn-primary">ckeck</a>
+    <a href="{% url 'order:create' %}" class="btn btn-primary">{% translate 'برداخت' %}</a>
 
 {% endblock %}
 

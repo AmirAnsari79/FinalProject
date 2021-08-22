@@ -1,3 +1,4 @@
+{% load i18n %}
 <div class="container" style="display: block">
     {% for product in products %}
         <div class="card" style="width: 18rem; display: inline-flex;">
@@ -5,7 +6,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{ product.Name }}</h5>
                 <p class="card-text">{{ product.description }}</p>
-                <a href="{{ product.get_absolute_url }}" class="btn btn-primary">Go to see</a>
+                <a href="{{ product.get_absolute_url }}" class="btn btn-primary">{% trans 'بریم ببینیم' %}</a>
             </div>
 
     </div>

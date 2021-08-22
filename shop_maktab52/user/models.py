@@ -1,16 +1,21 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 from .managers import MyUserManager
+from django.utils.translation import gettext as _
 
 
 class User(AbstractBaseUser):
-    email = models.EmailField(max_length=100, unique=True)
-    full_name = models.CharField(max_length=100)
-    is_admin = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
+    email = models.EmailField(max_length=100, unique=True, verbose_name=_('ایمیل'))
+    full_name = models.CharField(max_length=100, verbose_name=_('نام '))
+    is_admin = models.BooleanField(default=False, verbose_name=_('ادمین بودن '))
+    is_active = models.BooleanField(default=True, verbose_name=_('فعال بودن'))
     objects = MyUserManager()
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['full_name']
+
+    class Meta:
+        verbose_name = _('کاربر')
+        verbose_name_plural = _('کاربر')
 
     def __str__(self):
         return self.email
