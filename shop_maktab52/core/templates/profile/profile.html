@@ -1,29 +1,21 @@
 {% extends 'base.html' %}
 
 {% block ShowCategory %}{% endblock %}
-{% block navbar %}{% endblock %}
-<div class="container">
-    <div class="col-12">
-        <div class="col-9">
-            {% block ShowBasket %}
 
-                {% include 'basket/Basket_receipts.html' %}
-            {% endblock %}
-
+{% block ShowProduct %}
+    <br>
+    <div class="container">
+        <div class="col-12 col-sm-3">
+            <button class="btn btn-info">
+                {{ get.full_name }}
+            </button>
+            <button class="btn btn-info">
+                {{ get.email }}
+            </button>
         </div>
-
+        <br>
     </div>
+{% endblock %}
 
-    <div class="col-3 center " style="margin-left: 12px" >
-        {% block ShowProduct %}
-
-            {{ get.email }}
-            <br>
-            {{ get.full_name }}
-        {% endblock %}
-
-    </div>
-
-</div>
 
 

@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 from .managers import MyUserManager
@@ -29,3 +30,15 @@ class User(AbstractBaseUser):
     @property
     def is_staff(self):
         return self.is_admin
+
+
+# class Profile(models.Model):
+#     Address = models.TextField(verbose_name=_(''))
+#     Mobile = models.DecimalField(verbose_name=_(''), max_digits=11, decimal_places=0)
+#     user = models.OneToOneField(
+#         User, on_delete=models.CASCADE, related_name='Profile', verbose_name=_('کاربر')
+#     )
+#
+#     class Meta:
+#         verbose_name = _('حساب کاربری')
+#         verbose_name_plural = _('حساب کاربری')

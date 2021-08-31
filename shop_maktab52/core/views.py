@@ -24,6 +24,7 @@ def Home_Land(request, slug=None):
 
 def Product_Details(request, slug):
     product = get_object_or_404(Product, Slug=slug)
+
     form_add = AddForm()
     content = {
         'product': product,
@@ -32,6 +33,7 @@ def Product_Details(request, slug):
     return render(request, 'core/detailproduct.html', content)
 
 
+@login_required
 def Profile(request):
-    get_object = User.objects.get(pk=request.user.pk)
+    get_object = User.objects.get(pk=request.user.id)
     return render(request, 'profile/profile.html', {'get': get_object})

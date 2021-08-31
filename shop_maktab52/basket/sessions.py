@@ -31,7 +31,7 @@ class Basket:
             del self.cart[product_id]
             self.session_modification()
 
-    def add(self, product, Number=1):
+    def add(self, product, Number):
         product_id = str(product.id)
         if product_id not in self.cart:
             self.cart[product_id] = {'Number': 0, 'price': str(product.Price)}

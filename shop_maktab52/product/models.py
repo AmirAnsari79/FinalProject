@@ -26,6 +26,15 @@ class Product(BaseModel):
         return self.Name
 
 
+# Store = models.PositiveIntegerField(verbose_name=_('تعداد محصول'))
+# def check_Store(self, number):
+#     if self.Store < number:
+#         return False
+#     else:
+#         self.Store -= number
+#         self.save()
+#         return True
+
 class Category(BaseModel):
     Name = models.CharField(max_length=150, verbose_name=_(''))
     Slug = models.SlugField(max_length=100, unique=True, verbose_name=_(''))

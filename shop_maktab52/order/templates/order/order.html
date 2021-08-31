@@ -1,8 +1,15 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% block ShowCategory %}{% endblock %}
 {% block ShowBasket %}
+    <h3>ثبت سفارش</h3>
 
-    <h3>CheckOut</h3>
-    <p>Total:{{ order.get_total_price }}</p>
-    <a href="{% url 'order:payment' order_id %}">{% translate "برداخت" %}</a>
+    <form action="{% url 'order:coupon_apply' order.id %}" method="post">
+
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="{% trans 'ثبت کد' %}">
+    </form>
+    <p>قیمت نهایی:{{ order.get_total_price }}</p>
+    <a class="btn btn-danger" href="{% url 'order:payment' order.id %}">{% trans 'برداخت نهایی' %}</a>
 {% endblock %}
