@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'product',
     'order',
     'basket',
+    'API',
+    'rest_framework',
 
 ]
 
@@ -77,16 +79,21 @@ WSGI_APPLICATION = 'shop_maktab52.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'maktab52_shop',
+#         'USER': 'amirhossein',
+#         'PASSWORD': '89467336',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'maktab52_shop',
-        'USER': 'amirhossein',
-        'PASSWORD': '89467336',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    }
-}
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'shop_db.sqlite3',
+    }}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -130,3 +137,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ]
+}

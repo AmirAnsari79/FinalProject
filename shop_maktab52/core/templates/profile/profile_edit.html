@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block ShowCategory %}{% endblock %}
+{% block title %}ویرایش نمایه{% endblock %}
+{% block ShowProduct %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ profile_form.Address }}
+        <input type="submit" value="save">
+    </form>
+{% endblock %}

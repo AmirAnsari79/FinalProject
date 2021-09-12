@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
+from order.models import *
 from .forms import UserLoginForm, UserRegistrationForm
 from .models import User
 
@@ -41,3 +42,5 @@ def UserRegister(request):
     else:
         form = UserRegistrationForm()
     return render(request, 'core/register.html', {'form': form})
+
+

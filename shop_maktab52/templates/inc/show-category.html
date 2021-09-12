@@ -1,8 +1,14 @@
 {% load i18n %}
 <br>
-
+<div class="container">
+    <div class="col-12 mt-2 pb-4">
+        <form action="" method="get">
+            {{ search_form.as_p }}
+            <input type="submit" value="sub">
+        </form>
 <div class="container" style="width:50%; direction: rtl;">
 <span>{% trans 'دسته بندی:' %} </span>
+
     {% for category in categories %}
 
         <div class="btn-group">

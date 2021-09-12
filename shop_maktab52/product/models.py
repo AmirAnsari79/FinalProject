@@ -1,19 +1,22 @@
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 from django.utils.translation import gettext as _
 from core.models import BaseModel
 
 
-class Product(BaseModel):
+class Product(models.Model):
     Category = models.ManyToManyField(
-        'Category', related_name='Product', verbose_name=_('دسته بندی')
+        'Category', related_name='categories', verbose_name=_('دسته بندی')
     )
     Name = models.CharField(max_length=255, verbose_name=_('نام محصول'))
     Slug = models.SlugField(max_length=100, unique=True)
     Images = models.ImageField(upload_to='Product/%y/%m/%d/%h/', verbose_name=_('عکس'))
     description = models.TextField(verbose_name=_('اطلاعات'))
-    Price = models.DecimalField(max_digits=12, decimal_places=3, verbose_name=_('قیمت'))
+    Price = models.PositiveIntegerField(verbose_name=_('قیمت'))
     Available = models.BooleanField(default=True, verbose_name=_('دسترسی'))
+    Store = models.PositiveIntegerField(verbose_name=_('تعداد محصول'))
+    created_at = models.DateTimeField(auto_now_add=True, )
 
     class Meta:
         verbose_name = _('محصول')
@@ -25,15 +28,25 @@ class Product(BaseModel):
     def __str__(self):
         return self.Name
 
+    def get_price_display(self):
+        return f'{self.Price} تومان'
 
-# Store = models.PositiveIntegerField(verbose_name=_('تعداد محصول'))
-# def check_Store(self, number):
-#     if self.Store < number:
-#         return False
-#     else:
-#         self.Store -= number
-#         self.save()
-#         return True
+    def is_empty(self):
+        return self.Store == 0
+
+    def CheckStore(self, number):
+        if self.Store < number:
+            return False
+        elif self.Store == number:
+            self.Store -= number
+            self.IS_EMPTY = True
+            self.save()
+            return True
+        else:
+            self.Store -= number
+            self.save()
+            return True
+
 
 class Category(BaseModel):
     Name = models.CharField(max_length=150, verbose_name=_(''))

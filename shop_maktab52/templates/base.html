@@ -25,13 +25,11 @@
     {% include 'inc/message.html' %}
 {% endblock %}
 
-<div class="container">
-    <div class="col-12 mt-2 pb-4">
-        {% block ShowCategory %}
-            <!-- show and sort categories -->
-            {% include "inc/show-category.html" %}
-        {% endblock %}
-    </div>
+{% block ShowCategory %}
+    <!-- show and sort categories -->
+    {% include "inc/show-category.html" %}
+{% endblock %}
+</div>
 </div>
 <div class="container">
     <div class="row">

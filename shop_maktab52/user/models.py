@@ -32,13 +32,22 @@ class User(AbstractBaseUser):
         return self.is_admin
 
 
-# class Profile(models.Model):
-#     Address = models.TextField(verbose_name=_(''))
-#     Mobile = models.DecimalField(verbose_name=_(''), max_digits=11, decimal_places=0)
-#     user = models.OneToOneField(
-#         User, on_delete=models.CASCADE, related_name='Profile', verbose_name=_('کاربر')
-#     )
-#
-#     class Meta:
-#         verbose_name = _('حساب کاربری')
-#         verbose_name_plural = _('حساب کاربری')
+class Profiles(models.Model):
+    Address = models.TextField(verbose_name=_('آدرس محل سکونت با کد بستی'))
+    Mobile = models.CharField(verbose_name=_('تلفن همراه'), max_length=11)
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='profile', verbose_name=_('کاربر')
+    )
+    ProfileImage = models.ImageField(
+        verbose_name=_('تصویر بروفایل'), upload_to='Profile/image', null=True, blank=True
+    )
+
+    class Meta:
+        verbose_name = _('حساب کاربری')
+        verbose_name_plural = _('حساب کاربری')
+
+    def __str__(self):
+        return self.user.full_name
+
+    def is_Address(self):
+        return self.Address == ''

@@ -7,8 +7,13 @@
         <div class="card-body">
             <h5 class="card-title">{{ product.Name }}</h5>
             <p class="card-text">{{ product.description }}</p>
-            <a href="{{ product.get_absolute_url }}" class="btn btn-primary">{% trans 'بریم ببینیم' %}</a>
-        </div>
+            {% if check_store %}
+                <p>{% trans 'موجود نیست' %}</p>
+            {% else %}
+                <a href="{{ product.get_absolute_url }}" class="btn btn-primary">{% trans 'بریم ببینیم' %}</a>
+
+                </div>
+            {% endif %}
         </span>
 
     <br>
