@@ -15,6 +15,6 @@ class ProductViews(RetrieveUpdateDestroyAPIView):
 
 
 class ProductOnlyViews(ListCreateAPIView):
-    queryset = Product.objects.filter(Available=True)
+    queryset = Product.objects.all()
     serializer_class = ProductSerializer
     permission_classes = (permissions.IsAuthenticated, IsAdminEditable)

@@ -42,4 +42,4 @@ class SearchFormProduct(forms.Form):
 class ProfileEditForm(forms.ModelForm):
     class Meta:
         model = Profiles
-        fields = ['Mobile', 'Address',]
+        fields = ['Address', 'Mobile']

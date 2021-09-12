@@ -10,8 +10,17 @@
     <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.5.3/css/bootstrap.min.css"
           integrity="sha384-JvExCACAZcHNJEc7156QaHXTnQL3hQBixvj5RV5buE7vgnNEzzskDtx9NQ4p6BJe" crossorigin="anonymous">
     <title>{% block title %}{% trans 'خانه' %}{% endblock %}</title>
+    <style>
+        .card-img-top{
+            min-height: 150px;
+            max-height: 150px;
+            height: 150px;
+
+        }
+    </style>
 </head>
 <body style="background-color: #E5E4E2">
+
 <div class="container">
     <div class="col-12 mt-2">
         {% block navbar %}
@@ -29,8 +38,7 @@
     <!-- show and sort categories -->
     {% include "inc/show-category.html" %}
 {% endblock %}
-</div>
-</div>
+
 <div class="container">
     <div class="row">
         <div class="col-12">

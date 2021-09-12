@@ -1,7 +1,9 @@
 from datetime import datetime
 
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404, redirect
+from django.views.generic import TemplateView, DetailView, ListView
 
 from basket.forms import AddForm
 from basket.sessions import Basket
@@ -53,19 +55,38 @@ def Product_Details(request, slug):
 
 
 @login_required
-def Profile(request):
-    profile = Profiles.objects.get(user=request.user.id)
-    order_item = OrderItem.objects.filter(order__user=request.user.id)
-    return render(request, 'profile/profile.html', {'profile': profile, 'order_item': order_item})
+def profile(request):
+    # profile = Profiles.objects.get(user=request.user) if Profiles.objects.filter(user=request.user) else \
+    #     Profiles.objects.create(user=request.user)
+    pass
+    # order_item = OrderItem.objects.filter(order__user=request.user.id)
+    # return render(request, 'profile/profile.html', {'profile': profile, 'order_item': order_item})
+
+
+class Profile(LoginRequiredMixin, ListView):
+    template_name = 'profile/profile.html'
+
+    queryset = Profiles.objects.all()
+
+    def get_context_data(self, **kwargs):
+        kwargs['order_item'] = OrderItem.objects.filter(order__user=self.request.user.id)
+        kwargs['profile'] = Profiles.objects.get(user=self.request.user) if Profiles.objects.filter(
+            user=self.request.user) else \
+            Profiles.objects.create(user=self.request.user)
+        return super().get_context_data(**kwargs)
 
 
 @login_required
 def ProfileEdit(request):
+    _instance = Profiles.objects.get(user=request.user) if Profiles.objects.filter(user=request.user) else \
+        Profiles.objects.create(user=request.user)
     if request.method == 'POST':
-        profile_form = ProfileEditForm(request.POST, instance=request.user.profile)
+        # print(Profiles.objects.get(user=request.user))
+
+        profile_form = ProfileEditForm(request.POST, instance=_instance)
         if profile_form.is_valid():
             profile_form.save()
             return redirect('core:profile')
     else:
-        profile_form = ProfileEditForm(instance=request.user.profile)
+        profile_form = ProfileEditForm(instance=_instance)
     return render(request, 'profile/profile_edit.html', {'profile_form': profile_form})

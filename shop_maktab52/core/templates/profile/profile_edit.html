@@ -5,6 +5,7 @@
     <form action="" method="post">
         {% csrf_token %}
         {{ profile_form.Address }}
+        {{ profile_form.Mobile }}
         <input type="submit" value="save">
     </form>
 {% endblock %}

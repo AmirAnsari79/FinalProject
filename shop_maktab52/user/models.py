@@ -47,7 +47,7 @@ class Profiles(models.Model):
         verbose_name_plural = _('حساب کاربری')
 
     def __str__(self):
-        return self.user.full_name
+        return "profile : " + self.user.full_name
 
     def is_Address(self):
         return self.Address == ''

@@ -36,10 +36,7 @@ class Product(models.Model):
 
     def CheckStore(self, number):
         if self.Store < number:
-            return False
-        elif self.Store == number:
             self.Store -= number
-            self.IS_EMPTY = True
             self.save()
             return True
         else:

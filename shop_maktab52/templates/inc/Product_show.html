@@ -1,20 +1,19 @@
 {% load i18n %}
 
 {% for product in products %}
-    <span class="card" style="width: 18rem; display: inline-flex;">
+    <div class="card" style="width: 18rem; display: inline-flex;">
 
         <img class="card-img-top" src="{{ product.Images.url }}" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">{{ product.Name }}</h5>
             <p class="card-text">{{ product.description }}</p>
-            {% if check_store %}
-                <p>{% trans 'موجود نیست' %}</p>
+            {% if product.is_empty %}
+                <span>{% trans 'موجود نیست' %}</span>
             {% else %}
                 <a href="{{ product.get_absolute_url }}" class="btn btn-primary">{% trans 'بریم ببینیم' %}</a>
 
-                </div>
             {% endif %}
-        </span>
+        </div>
+    </div>
 
-    <br>
 {% endfor %}
