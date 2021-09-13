@@ -5,43 +5,53 @@
 {% block ShowProduct %}
     <br>
     <div class="container" style="direction: rtl">
-        <div class="col-12 col-sm-3">
-            <span class="btn btn-info p-3">
-                {{ profile.user.full_name }}
-                {{ profile.user.editable }}
-            </span>
-            <br>
-            <br>
-            <span class="btn btn-info p-3">
-                {{ profile.Mobile }}
-            </span>
-            <br>
-            <br>
-            <span class="btn btn-info p-3">
-                {{ profile.Address }}
-            </span>
-            <br>
-            <br>
-        </div>
-        <div class="col-12 col-sm-9">
-            {% if profile.ProfileImage %}
-                <img style="width: 150px ; height: 150px;" src="{{ profile.ProfileImage.url }}" >
-            {% endif %}
-        <a href="{% url 'core:profile_edit' %}" class="btn btn-secondary">ویرایش بروفایل</a>
-        <a href="#" class="btn btn-secondary">تغییر رمز</a>
-        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="col-12 col-sm-3 btn btn-info p-3">
+                    نام کاربر:
+                    {{ profile.user.full_name }}
+                    {#                {{ profile.user.editable }}#}
+                </div>
 
-        <br>
+                <div class="col-12 col-sm-3 btn btn-info p-3">
+                    شماره تلفن :
+                    {{ profile.Mobile }}
+                </div>
+                <br>
+                <br>
+                <div class="col-12 col-sm-12 btn btn-info p-3">
+                    آدرس و کد بستی:
+
+                    {{ profile.Address }}
+
+                </div>
+
+
+            </div>
+        </div>
     </div>
-{#    {% for foo in order %}#}
-{#    {{ foo.update }}#}
-{#    {% endfor %}#}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-9">
+                {% if profile.ProfileImage %}
+                    <img style="width: 150px ; height: 150px;" src="{{ profile.ProfileImage.url }}">
+                {% endif %}
+                <a href="{% url 'core:profile_edit' %}" class="btn btn-secondary">ویرایش بروفایل</a>
+                <a href="#" class="btn btn-secondary">تغییر رمز</a>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    {#    {% for foo in order %}#}
+    {#    {{ foo.update }}#}
+    {#    {% endfor %}#}
     {% for foo in order_item %}
-        {{foo.price  }}
+        {{ foo.price }}
         <br>
-        {{foo.Number  }}
+        {{ foo.Number }}
         <br>
-        {{foo.product  }}
+        {{ foo.product }}
         <br>
         {{ foo.order.user }}
         <br>

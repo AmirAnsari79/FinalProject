@@ -29,7 +29,7 @@ class Product(models.Model):
         return self.Name
 
     def get_price_display(self):
-        return f'{self.Price} تومان'
+        return f'{self.Price}  تومان '
 
     def is_empty(self):
         return self.Store == 0
