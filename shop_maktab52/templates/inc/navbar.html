@@ -1,35 +1,48 @@
 {% load i18n %}
-<div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav mr-auto ">
-                <li class="nav-item  ">
-                    <h4><a class="nav-link" href="#">{% trans 'درباره ما' %}</a></h4>
-                </li>
-                <li class="nav-item">
-                    <h4><a class="nav-link" href="{% url 'core:home' %}">{% trans 'صفحه اصلی' %}</a></h4>
-                </li>
-                {% if request.user.is_authenticated %}
-                    <li class="nav-item">
-                        <h4><a class="nav-link" href="{% url 'user:logout' %}">{% trans 'خروج' %} </a></h4>
-                    <li class="nav-item">
-                        <h4><a class="nav-link" href="{% url 'core:profile' %}">{{ user.full_name }}</a></h4>
-                    </li>
-                    </li>
-                    <li class="nav-item">
-                        <h4><a class="nav-link" href="{% url 'basket:basket_detail' %}">{% trans 'سبد خرید' %} </a></h4>
-                    </li>
+<br>
+<div class="container bg-" style="direction: rtl">
+    <div class="row">
+        <div class="col-12">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
+                            type="button"
+                            role="tab" aria-controls="nav-profile" aria-selected="false"><a class="nav-link"
+                                                                                            href="{% url 'core:home' %}">{% trans 'صفحه اصلی' %}</a>
+                    </button>
+                    {% if request.user.is_authenticated %}
+                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
+                                type="button"
+                                role="tab" aria-controls="nav-contact" aria-selected="false"><a class="nav-link"
+                                                                                                href="{% url 'core:profile' %}">{{ user.full_name }}</a>
+                        </button>
+                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
+                                type="button"
+                                role="tab" aria-controls="nav-contact" aria-selected="false">
+                            <a class="nav-link"
+                               href="{% url 'user:logout' %}">{% trans 'خروج' %} </a>
 
-                {% else %}
-                    <li class="nav-item">
-                        <h4><a class="nav-link" href="{% url 'user:login' %}">{% trans 'ورود' %}</a></h4>
-                    </li>
-                    <li class="nav-item">
-                        <h4><a class="nav-link" href="{% url 'user:register' %}">{% trans 'عضویت' %}</a></h4>
-                    </li>
+                        </button>
+                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
+                                type="button"
+                                role="tab" aria-controls="nav-contact" aria-selected="false"><a class="nav-link"
+                                                                                                href="{% url 'basket:basket_detail' %}">{% trans 'سبد خرید' %} </a>
+                        </button>
+                    {% else %}
+                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
+                                type="button"
+                                role="tab" aria-controls="nav-contact" aria-selected="false"><a class="nav-link"
+                                                                                                href="{% url 'user:login' %}">{% trans 'ورود' %}</a>
+                        </button>
+                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
+                                type="button"
+                                role="tab" aria-controls="nav-contact" aria-selected="false"><a class="nav-link"
+                                                                                                href="{% url 'user:register' %}">{% trans 'عضویت' %}</a>
+                        </button>
 
-                {% endif %}
-
-            </ul>
+                    {% endif %}
+                </div>
+            </nav>
         </div>
-    </nav>
+    </div>
+</div>

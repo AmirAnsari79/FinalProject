@@ -1,19 +1,25 @@
 {% load i18n %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            {% for product in products %}
+                <div class="card" style="width: 18rem; display: inline-flex;">
 
-{% for product in products %}
-    <div class="card" style="width: 18rem; display: inline-flex;">
+                    <img class="card-img-top" src="{{ product.Images.url }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.Name }}</h5>
+                        <p class="card-text">{{ product.description }}</p>
+                        {% if product.is_empty %}
+                            <span>{% trans 'موجود نیست' %}</span>
+                        {% else %}
+                            <a href="{{ product.get_absolute_url }}"
+                               class="btn btn-primary">{% trans 'بریم ببینیم' %}</a>
 
-        <img class="card-img-top" src="{{ product.Images.url }}" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">{{ product.Name }}</h5>
-            <p class="card-text">{{ product.description }}</p>
-            {% if product.is_empty %}
-                <span>{% trans 'موجود نیست' %}</span>
-            {% else %}
-                <a href="{{ product.get_absolute_url }}" class="btn btn-primary">{% trans 'بریم ببینیم' %}</a>
+                        {% endif %}
+                    </div>
+                </div>
 
-            {% endif %}
+            {% endfor %}
         </div>
     </div>
-
-{% endfor %}
+</div>

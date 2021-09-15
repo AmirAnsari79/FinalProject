@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block ShowCategory %}{% endblock %}
 
@@ -8,19 +9,19 @@
         <div class="row">
             <div class="col-12">
                 <div class="col-12 col-sm-3 btn btn-info p-3">
-                    نام کاربر:
+                    {% trans 'نام کاربر : ' %}
                     {{ profile.user.full_name }}
                     {#                {{ profile.user.editable }}#}
                 </div>
 
-                <div class="col-12 col-sm-3 btn btn-info p-3">
-                    شماره تلفن :
+                <div class="col-12 col-sm-3 btn btn-info p-3 mr-2">
+                    {% trans 'شماره تلفن :' %}
                     {{ profile.Mobile }}
                 </div>
                 <br>
                 <br>
                 <div class="col-12 col-sm-12 btn btn-info p-3">
-                    آدرس و کد بستی:
+                    {% trans 'آدرس و کد بستی:' %}
 
                     {{ profile.Address }}
 
@@ -36,28 +37,34 @@
                 {% if profile.ProfileImage %}
                     <img style="width: 150px ; height: 150px;" src="{{ profile.ProfileImage.url }}">
                 {% endif %}
-                <a href="{% url 'core:profile_edit' %}" class="btn btn-secondary">ویرایش بروفایل</a>
-                <a href="#" class="btn btn-secondary">تغییر رمز</a>
+                <a href="{% url 'core:profile_edit' %}" class="btn btn-secondary mt-3 mb-5"
+                   style="direction: rtl">{% trans 'ویرایش بروفایل' %}</a>
             </div>
         </div>
     </div>
 
-    <br>
-    {#    {% for foo in order %}#}
-    {#    {{ foo.update }}#}
-    {#    {% endfor %}#}
-    {% for foo in order_item %}
-        {{ foo.price }}
-        <br>
-        {{ foo.Number }}
-        <br>
-        {{ foo.product }}
-        <br>
-        {{ foo.order.user }}
-        <br>
+    <div style="direction: rtl">
+        {% for foo in order_item %}
+            <div class="card mb-3" style="max-width: 340px; direction: rtl">
+                <div class="row g-1">
+                    {#                    <div class="col-md-4">#}
+                    {#                        <img src="" class="img-fluid rounded-start" >#}
+                    {#                    </div>#}
+                    <div class="col-12">
+                        <div class="card-body">
+                            <h5 class="card-title">{% trans 'نام محصول :' %} {{ foo.product.Name }}</h5>
+                            <h5 class="card-title">{% trans 'کد رهگیری :' %} {{ foo.id }} </h5>
+                            <p class="card-text">{% trans ' تعداد : ' %}{{ foo.Number }}</p>
+                            <p class="card-text">{% trans ' جمع کل : ' %}{{ foo.get_price }} تومان </p>
+                            <p class="card-text"><small class="text-muted">
+                                {% trans 'تاریخ سفارش' %} {{ foo.product.created_at }}</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    {% endfor %}
-
+        {% endfor %}
+    </div>
 
 
 {% endblock %}

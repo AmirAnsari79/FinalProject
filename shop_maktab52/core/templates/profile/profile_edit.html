@@ -1,11 +1,20 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block ShowCategory %}{% endblock %}
-{% block title %}ویرایش نمایه{% endblock %}
+{% block title %}{% trans 'ویرایش نمایه' %}{% endblock %}
 {% block ShowProduct %}
-    <form action="" method="post">
-        {% csrf_token %}
-        {{ profile_form.Address }}
-        {{ profile_form.Mobile }}
-        <input type="submit" value="save">
-    </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {% trans 'شماره همراه: ' %} {{ profile_form.Mobile }}
+                    <br><br><br>
+                    {% trans 'آدرس و کد بستی:' %} {{ profile_form.Address }}
+                    <br>
+                    <input type="submit" class="btn btn-primary" value="save">
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock %}

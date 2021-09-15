@@ -11,7 +11,7 @@
           integrity="sha384-JvExCACAZcHNJEc7156QaHXTnQL3hQBixvj5RV5buE7vgnNEzzskDtx9NQ4p6BJe" crossorigin="anonymous">
     <title>{% block title %}{% trans 'خانه' %}{% endblock %}</title>
     <style>
-        .card-img-top{
+        .card-img-top {
             min-height: 150px;
             max-height: 150px;
             height: 150px;
@@ -21,35 +21,45 @@
 </head>
 <body style="background-color: #E5E4E2">
 
-<div class="container">
-    <div class="col-12 mt-2">
-        {% block navbar %}
-            {% include "inc/navbar.html" %}
-        {% endblock %}
-    </div>
-</div>
+<!-- show navbar -->
+{% block navbar %}
+    {% include "inc/navbar.html" %}
+{% endblock %}
 
 <!-- show message -->
 {% block msg %}
     {% include 'inc/message.html' %}
 {% endblock %}
 
+<!-- show and sort categories -->
 {% block ShowCategory %}
-    <!-- show and sort categories -->
     {% include "inc/show-category.html" %}
 {% endblock %}
 
-<div class="container">
+<!-- product item  show -->
+{% block ShowProduct %}
+    {% include "inc/Product_show.html" %}
+{% endblock %}
+
+
+<!-- show basket -->
+{% block ShowBasket %}{% endblock %}
+
+
+
+<div class="container-fluid mt-5 ">
     <div class="row">
         <div class="col-12">
-            {% block ShowProduct %}
-                <!-- product item  show -->
-                {% include "inc/Product_show.html" %}
-            {% endblock %}
+
+    <h2>developer:  <a href="https://www.github.com/amirAnsari79/" class="bg-white p-3">GitHub</a> </h2>
+
         </div>
+
+
     </div>
+
+
 </div>
-{% block ShowBasket %}{% endblock %}
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
